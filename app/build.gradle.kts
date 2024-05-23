@@ -99,6 +99,7 @@ dependencies {
     implementation ("com.squareup.retrofit2:converter-gson:$retrofitVersion")
     implementation ("com.squareup.retrofit2:retrofit-mock:$retrofitVersion")
     implementation ("com.squareup.okhttp3:logging-interceptor:$okhttpLoggingInterceptorVersion")
+    implementation ("com.intuit.sdp:sdp-android:1.0.6")
 
 //    // Navigation
 //    implementation ("android.arch.navigation:navigation-fragment-ktx:$version_navigation")
