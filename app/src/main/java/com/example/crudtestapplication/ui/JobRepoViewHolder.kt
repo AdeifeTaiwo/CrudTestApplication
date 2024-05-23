@@ -82,8 +82,8 @@ class JobRepoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun showRepoData(repo: Jobs) {
         this.repo = repo
-        job_title.text = trimmedText(repo.job_title.toString())
-        location.text = repo.location
+        job_title.text = repo.description?:""
+        location.text = repo.created_at
         publicationDate.text = ""//formatDate(repo.created_at?:"")
 
         if (repo.isChecked == 0) {
@@ -94,12 +94,12 @@ class JobRepoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         if (repo.applied == 1) {
             arrowIcon.visibility = View.GONE
-            appliedTextView.text = "Applied   "
+            appliedTextView.text = "Already Read  "
             appliedTextView.typeface = Typeface.DEFAULT_BOLD
 
         } else {
             arrowIcon.visibility = View.VISIBLE
-            appliedTextView.text = "Apply"
+            appliedTextView.text = "Read News"
             appliedTextView.typeface = Typeface.DEFAULT
 
         }
