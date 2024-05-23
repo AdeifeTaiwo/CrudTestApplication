@@ -32,5 +32,8 @@
         <action
             android:id="@+id/action_logInFragment_to_jobSearchFragment"
             app:destination="@id/jobSearchFragment" />
+        <action
+            android:id="@+id/action_logInFragment_to_sgnUpFragment"
+            app:destination="@id/sgnUpFragment" />
     </fragment>
 </navigation>

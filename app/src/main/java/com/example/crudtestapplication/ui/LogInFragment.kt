@@ -46,6 +46,10 @@ class LogInFragment : Fragment() {
                 Toast.makeText(requireActivity(), "Input field cannot be empty", Toast.LENGTH_SHORT).show();
             }
         }
+
+        binding.llSignUp.setOnClickListener{
+            findNavController().navigate(R.id.action_logInFragment_to_sgnUpFragment)
+        }
     }
 
     companion object {
