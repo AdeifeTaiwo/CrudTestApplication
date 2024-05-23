@@ -43,6 +43,7 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="job_searched_now">Job Searched Now</string>
 
     <string-array name="months">
         <item>January</item>

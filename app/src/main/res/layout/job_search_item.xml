@@ -6,7 +6,7 @@
     <data>
         <variable
             name="jobs"
-            type="com.example.wicrypttechnicaltest.model.Jobs" />
+            type="com.example.crudtestapplication.model.Jobs" />
 
     </data>
 

@@ -34,7 +34,7 @@ class JobSearchAdapter : PagingDataAdapter<Jobs, JobRepoViewHolder>(REP0_COMPANI
         }
 
         override fun areContentsTheSame(oldItem: Jobs, newItem: Jobs): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem.created_at == newItem.created_at
         }
     }
 

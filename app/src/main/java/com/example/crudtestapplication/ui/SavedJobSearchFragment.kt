@@ -9,10 +9,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.ExperimentalPagingApi
+import com.example.crudtestapplication.Injection
 import com.example.crudtestapplication.R
 import com.example.crudtestapplication.databinding.SavedJobSearchFragmentBinding
-import com.example.wicrypttechnicaltest.Injection
-import com.example.wicrypttechnicaltest.ui.SavedJobSearchViewModel
 
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch

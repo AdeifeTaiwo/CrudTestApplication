@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-android")
     id("kotlin-kapt")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -31,6 +32,7 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+
     }
     kotlinOptions {
         jvmTarget = "1.8"
@@ -43,7 +45,7 @@ android {
 
 dependencies {
 
-    val kotlin_version = "1.5.0"
+    val kotlin_version = "1.9.20"
     val compileSdkVersion = 28
     val minSdkVersion = 15
     val targetSdkVersion = 28
@@ -52,9 +54,9 @@ dependencies {
     val recyclerViewVersion = "1.2.0"
     val constraintLayoutVersion = "2.0.4"
     val materialVersion = "1.3.0"
-    val lifecycleVersion = "2.3.1"
-    val roomVersion = "2.3.0"
-    val pagingVersion = "3.0.0"
+    val lifecycleVersion = "2.8.0"
+    val roomVersion = "2.6.1"
+    val pagingVersion = "3.3.0"
     val retrofitVersion = "2.9.0"
     val okhttpLoggingInterceptorVersion = "4.9.0"
     val coroutines = "1.4.3"
@@ -89,7 +91,8 @@ dependencies {
     implementation( "androidx.room:room-runtime:$roomVersion")
     implementation ("androidx.room:room-ktx:$roomVersion")
     implementation ("androidx.paging:paging-runtime-ktx:$pagingVersion")
-    //kapt ("androidx.room:room-compiler:$roomVersion")
+    kapt ("androidx.room:room-compiler:2.6.1")
+    implementation ("androidx.room:room-paging:2.6.1")
 
     // retrofit
     implementation ("com.squareup.retrofit2:retrofit:$retrofitVersion")
@@ -100,8 +103,6 @@ dependencies {
 //    // Navigation
 //    implementation ("android.arch.navigation:navigation-fragment-ktx:$version_navigation")
 //    implementation ("android.arch.navigation:navigation-ui-ktx:$version_navigation")
-//
-//    implementation ("androidx.navigation:navigation-fragment-ktx:$latestNavigationVersion")
-//    implementation "androidx.navigation:navigation-ui-ktx:$latestNavigationVersion"
+
 
 }

@@ -48,8 +48,11 @@ class JobSearchRemoteMediator(
         }
         val apiQuery = query
         try {
-            val apiResponse = service.jobSearchRepos(page, apiQuery)
-            val repos = apiResponse
+            val sources = listOf("bbc-news", "abc-news", "al-jazeera-english").joinToString{","}
+            val apiResponse = service.jobSearchRepos(page, sources = "bbc-news")
+            print(apiResponse)
+            val repos = apiResponse.articles
+            print("totalSize" + repos.size);
             val endOfPagination = repos.isEmpty()
 
             repoDatabase.withTransaction {
@@ -60,15 +63,38 @@ class JobSearchRemoteMediator(
                 }
                 val prevKey = if (page == GITHUB_STARTING_PAGE_INDEX) null else page - 1
                 val nextKey = if (endOfPagination) null else page + 1
+
+                print("totalSize" + repos.size);
                 val keys = repos.map {
                     RemoteKeys(
-                            repoId = it.id,
+                            repoId = it.created_at?:"",
                             nextKey = nextKey,
                             prevKey = prevKey
                     )
                 }
-                repoDatabase.remoteKeysDao().insertAll(keys)
-                repoDatabase.reposDao().insertAll(repos)
+                val repo = repos.map {
+                    Jobs(
+                        id = it.id,
+                        author = it.author,
+                        url = it.url,
+                        created_at = it.created_at,
+                        description = it.description,
+                        publishedAt = it.publishedAt,
+
+                        urlToImage = it.urlToImage,
+                        isChecked = it.isChecked,
+                        applied = it.applied,
+                        it.companyName
+
+                    )
+                }
+                try {
+                    repoDatabase.remoteKeysDao().insertAll(keys)
+                    repoDatabase.reposDao().insertAll(repo)
+                }
+                catch (e: Exception){
+                    print(e.stackTrace);
+                }
             }
             return MediatorResult.Success(endOfPaginationReached = endOfPagination)
         } catch (exception: IOException) {
@@ -84,7 +110,7 @@ class JobSearchRemoteMediator(
         return state.pages.lastOrNull() { it.data.isNotEmpty() }?.data?.lastOrNull()
                 ?.let { repo ->
                     // Get the remote keys of the last item retrieved
-                    repoDatabase.remoteKeysDao().remoteKeysRepoId(repo.id)
+                    repoDatabase.remoteKeysDao().remoteKeysRepoId(repo.created_at?:"")
                 }
     }
 
@@ -94,7 +120,7 @@ class JobSearchRemoteMediator(
         return state.pages.firstOrNull { it.data.isNotEmpty() }?.data?.firstOrNull()
                 ?.let { repo ->
                     // Get the remote keys of the first items retrieved
-                    repoDatabase.remoteKeysDao().remoteKeysRepoId(repo.id)
+                    repoDatabase.remoteKeysDao().remoteKeysRepoId(repo.created_at?:"")
                 }
     }
 
@@ -104,7 +130,7 @@ class JobSearchRemoteMediator(
         // The paging library is trying to load data after the anchor position
         // Get the item closest to the anchor position
         return state.anchorPosition?.let { position ->
-            state.closestItemToPosition(position)?.id?.let { repoId ->
+            state.closestItemToPosition(position)?.created_at?.let { repoId ->
                 repoDatabase.remoteKeysDao().remoteKeysRepoId(repoId)
             }
         }

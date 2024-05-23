@@ -16,9 +16,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.DividerItemDecoration
+import com.example.crudtestapplication.Injection
 import com.example.crudtestapplication.R
 import com.example.crudtestapplication.databinding.JobSearchFragmentBinding
-import com.example.wicrypttechnicaltest.Injection
 
 import com.example.wicrypttechnicaltest.ui.JobSearchViewModel
 import kotlinx.coroutines.Job
@@ -47,8 +47,7 @@ class JobSearchFragment : Fragment() {
 
         adapter = JobSearchAdapter()
 
-        viewModel = ViewModelProvider(this, Injection.provideViewModelFactory(requireContext()))
-                .get(JobSearchViewModel::class.java)
+        viewModel = ViewModelProvider(this, Injection.provideViewModelFactory(requireContext()))[JobSearchViewModel::class.java]
 
         val binding: JobSearchFragmentBinding = DataBindingUtil.inflate(
                 inflater, R.layout.job_search_fragment, container, false)

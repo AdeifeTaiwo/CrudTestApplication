@@ -1,17 +1,18 @@
-package com.example.wicrypttechnicaltest
+package com.example.crudtestapplication
 
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider
+import com.example.crudtestapplication.api.JobSearchService
+import com.example.crudtestapplication.data.JobSearchRepository
 import com.example.crudtestapplication.db.JobRepoDatabase
-import com.example.wicrypttechnicaltest.api.JobSearchService
-import com.example.wicrypttechnicaltest.data.JobSearchRepository
-import com.example.wicrypttechnicaltest.ui.ViewModelFactory
-import com.example.wicrypttechnicaltest.ui.ViewModelFactory2
+import com.example.crudtestapplication.ui.ViewModelFactory
+import com.example.crudtestapplication.ui.ViewModelFactory2
+
 import java.security.AccessControlContext
 
 object Injection {
 
-    private fun provideJobSearchRepository(context: Context): JobSearchRepository{
+    private fun provideJobSearchRepository(context: Context): JobSearchRepository {
         return JobSearchRepository(JobSearchService.create(), JobRepoDatabase.getInstance(context) )
 
     }

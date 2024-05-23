@@ -1,37 +1,52 @@
 package com.example.crudtestapplication.model
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
-
+import kotlinx.parcelize.Parcelize
+import retrofit2.http.Field
 
 
 data class JobRepo(
-        @field:SerializedName("0-legal-notice") val legal_notice: String,
-        @field:SerializedName("job-count") val job_count: Int =0,
-        @field:SerializedName("jobs") val jobs:List<Jobs> = emptyList()
-){
-    val nextKey : Int = 1
+    val articles: List<Jobs>,
+    val status: String,
+    val totalResults: Int,
+) {
+
 }
 
 
 @Entity(tableName = "repos")
 data class Jobs(
-        @PrimaryKey @field:SerializedName("id") val id: String,
-        @field:SerializedName("type") val type: String,
-        @field:SerializedName("url") val url: String,
-        @field:SerializedName("location") val location: String,
-        @field:SerializedName("created_at") val created_at: String,
-        @field:SerializedName("company") val companyName: String,
-        @field:SerializedName("company_url") val company_url: String?,
-        @field:SerializedName("title") val job_title: String?,
-        @field:SerializedName("description") val description: String?,
-        @field:SerializedName("company_logo") val company_logo:String?,
-        @field:SerializedName("how_to_apply") val how_to_apply: String,
-        var isChecked: Int =0,
-        var applied: Int =0
-){
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
+    //@PrimaryKey @field:SerializedName("id") val id: String,
+     val type: String? ="",
+    val location: String? ="",
+    @field:SerializedName("title") val created_at: String? ="",
+    val companyName: String,
+   val company_url: String?,
+    val job_title: String?,
+    val company_logo: String?,
+     val how_to_apply: String,
+
+    val author: String? ="",
+    val content: String?="",
+    val description: String?="",
+    val publishedAt: String?="",
+    //val title: String?="",
+    val url: String ="",
+    val urlToImage: String?="",
+    var isChecked: Int = 0,
+    var applied: Int = 0
+) {
 
 
 }
 
+@Parcelize
+data class Source(
+    val id: String,
+    val name: String
+): Parcelable

@@ -24,7 +24,7 @@ class JobSearchRepository (
     fun getSearchResultStream(query: String): Flow<PagingData<Jobs>> {
         Log.d("JobSearhRepository", "New query: $query")
         val dbQuery = "%${query.replace(' ', '%')}%"
-        val pagingSourceFactory = { database.reposDao().reposByName(dbQuery)}
+        val pagingSourceFactory = { database.reposDao().reposByName()}
         return Pager(
                 config = PagingConfig(
                         pageSize = NETWORK_PAGE_SIZE,

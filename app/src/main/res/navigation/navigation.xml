@@ -13,5 +13,6 @@
     <fragment
         android:id="@+id/savedJobSearchFragment"
         android:name="com.example.crudtestapplication.ui.SavedJobSearchFragment"
-        android:label="Saved Jobs" />
+        android:label="Saved Jobs"
+        tools:layout="@layout/saved_job_search_fragment"/>
 </navigation>

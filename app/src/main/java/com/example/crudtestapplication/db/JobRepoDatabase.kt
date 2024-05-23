@@ -4,8 +4,9 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.example.crudtestapplication.model.Jobs
 
-import com.example.wicrypttechnicaltest.model.Jobs
 
 /**
  * A database that stores SleepNight information.

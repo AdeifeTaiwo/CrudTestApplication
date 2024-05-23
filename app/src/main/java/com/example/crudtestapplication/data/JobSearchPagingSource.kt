@@ -20,10 +20,11 @@ class JobSearchPagingSource(
 
         val position = params.key?: GITHUB_STARTING_PAGE_INDEX
         val apiQuery = query
+        val page = params.key?: 1
 
         return  try {
-            val response = service.jobSearchRepos(position,apiQuery)
-            val repos = response
+            val response = service.jobSearchRepos(page,"BBC-News")
+            val repos = response.articles
             val nextKey = if(repos.isEmpty()){
                 null
             }
