@@ -25,14 +25,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.lifecycleOwner = this
         drawerLayout = binding.drawerLayout
-        setSupportActionBar(null);
+        setSupportActionBar(binding.toolbar.toolbar);
 
         supportActionBar?.title = "Job Search"
 
-       //val  navController = findNavController(this@MainActivity, R.id.nav_host_fragment)
+        //val  navController = findNavController(this@MainActivity, R.id.nav_host_fragment)
         val navController = this.findNavController(R.id.nav_host_fragment)
         navController.setGraph(R.navigation.navigation)
-        //NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
+        NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
         NavigationUI.setupWithNavController( binding.navView, navController)
 
 

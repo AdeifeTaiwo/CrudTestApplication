@@ -25,11 +25,11 @@ data class Jobs(
      val type: String? ="",
     val location: String? ="",
     @field:SerializedName("title") val created_at: String? ="",
-    val companyName: String,
+    val companyName: String?,
    val company_url: String?,
     val job_title: String?,
     val company_logo: String?,
-     val how_to_apply: String,
+     val how_to_apply: String?,
 
     val author: String? ="",
     val content: String?="",

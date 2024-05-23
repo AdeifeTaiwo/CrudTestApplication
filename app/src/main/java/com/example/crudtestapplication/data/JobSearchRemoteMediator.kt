@@ -84,8 +84,12 @@ class JobSearchRemoteMediator(
                         urlToImage = it.urlToImage,
                         isChecked = it.isChecked,
                         applied = it.applied,
-                        it.companyName
-
+                        companyName = it.companyName,
+                        company_logo = it.company_logo,
+                        location = it.location,
+                        job_title = it.job_title,
+                        company_url = it.company_url,
+                        how_to_apply = it.how_to_apply
                     )
                 }
                 try {

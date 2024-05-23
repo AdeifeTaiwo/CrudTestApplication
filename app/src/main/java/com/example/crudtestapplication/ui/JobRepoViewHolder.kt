@@ -84,7 +84,7 @@ class JobRepoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         this.repo = repo
         job_title.text = trimmedText(repo.job_title.toString())
         location.text = repo.location
-        publicationDate.text = formatDate(repo.created_at?:"")
+        publicationDate.text = ""//formatDate(repo.created_at?:"")
 
         if (repo.isChecked == 0) {
             favourite.background = itemView.context.resources.getDrawable(R.drawable.ic_baseline_favorite_empty_24)
