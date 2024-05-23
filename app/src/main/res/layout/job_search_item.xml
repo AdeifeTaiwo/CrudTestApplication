@@ -90,7 +90,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="5dp"
                     android:layout_marginRight="5dp"
-                    android:text="CV Sent"
+                    android:text=""
                     app:layout_constraintEnd_toStartOf="@+id/cv_count"
                     app:layout_constraintTop_toBottomOf="@+id/publication_date" />
 
@@ -101,7 +101,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
-                    android:text="32"
+                    android:text=""
                     android:textColor="@color/primaryDarkColor"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/publication_date" />
@@ -145,11 +145,11 @@
                     android:id="@+id/favouriteImageView"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:layout_marginStart="218dp"
+
                     android:layout_marginLeft="218dp"
                     android:layout_marginTop="9dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginRight="0dp"
                     android:textOn=""
                     android:textOff=""
                     android:background="@drawable/toggle_fav_button"
@@ -157,7 +157,7 @@
                     app:layout_constraintBottom_toBottomOf="@+id/linearLayout3"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/linearLayout3"
+                    app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cv_count"
                     app:layout_constraintVertical_bias="1.0" />
 
